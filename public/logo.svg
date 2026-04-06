@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="400" height="400">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M1.5 2L8.5 5L1.5 8" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#6366f1" stroke-width="0.8" opacity="0.18"/>
+  <circle cx="100" cy="100" r="68" fill="none" stroke="#6366f1" stroke-width="0.5" stroke-dasharray="5 4" opacity="0.14"/>
+
+  <path d="M 108,42 C 160,52 180,106 150,128" fill="none" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arr)"/>
+  <path d="M 148,143 C 130,176 70,176 52,143" fill="none" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arr)"/>
+  <path d="M 34,122 C 16,88 50,42 92,36" fill="none" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <circle cx="100" cy="33" r="14" fill="#6366f1"/>
+  <circle cx="100" cy="33" r="6" fill="#c7d2fe"/>
+
+  <circle cx="160" cy="135" r="14" fill="#6366f1"/>
+  <circle cx="160" cy="135" r="6" fill="#c7d2fe"/>
+
+  <circle cx="40" cy="135" r="14" fill="#6366f1"/>
+  <circle cx="40" cy="135" r="6" fill="#c7d2fe"/>
+
+  <g transform="translate(100,96) rotate(45)">
+    <rect x="-24" y="-24" width="48" height="48" rx="5" fill="#6366f1"/>
+    <rect x="-14" y="-14" width="28" height="28" rx="3" fill="none" stroke="#a5b4fc" stroke-width="1.5"/>
+  </g>
+  <line x1="90" y1="96" x2="110" y2="96" stroke="#e0e7ff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="100" y1="86" x2="100" y2="106" stroke="#e0e7ff" stroke-width="2" stroke-linecap="round"/>
+</svg>
