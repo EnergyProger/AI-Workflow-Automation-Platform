@@ -1,12 +1,19 @@
 import { inngest } from "@/inngest/client";
-import { createTRPCRouter, protectedProcedure } from "../init";
+import { baseProcedure, createTRPCRouter, protectedProcedure } from "../init";
 import prisma from "@/lib/prisma";
 
 export const appRouter = createTRPCRouter({
+  testAI: baseProcedure.mutation(async () => {
+    await inngest.send({
+      name: "execute/ai",
+    });
+
+    return { success: true, message: "AI executed successfully" };
+  }),
   getWorkflows: protectedProcedure.query(() => {
     return prisma.workflow.findMany();
   }),
-  createWorkflow: protectedProcedure.mutation(async() => {
+  createWorkflow: protectedProcedure.mutation(async () => {
     await inngest.send({
       name: "test/hello.world",
       data: {
@@ -14,7 +21,7 @@ export const appRouter = createTRPCRouter({
       },
     });
 
-    return {success: true, message: "Workflow created successfully"}
+    return { success: true, message: "Workflow created successfully" };
   }),
 });
 // export type definition of API
