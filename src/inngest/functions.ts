@@ -3,6 +3,7 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { createOpenAI } from "@ai-sdk/openai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { generateText } from "ai";
+import * as Sentry from "@sentry/nextjs";
 
 const google = createGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
@@ -17,6 +18,9 @@ const anthropic = createAnthropic({
 export const executeAI = inngest.createFunction(
   { id: "execute-ai", triggers: { event: "execute/ai" } },
   async ({ event, step }) => {
+    Sentry.logger.info("User triggered test log", {log_source: "sentry_test"})
+    console.warn("This is a warning");
+    console.error("This is an error");
     const { steps: geminiSteps } = await step.ai.wrap(
       "gemini-generate-text",
       generateText,
@@ -24,6 +28,11 @@ export const executeAI = inngest.createFunction(
         system: "You are a helpful assistant.",
         prompt: "What is 5 + 5?",
         model: google("gemini-2.5-flash"),
+        experimental_telemetry: {
+          isEnabled: true,
+          recordInputs: true,
+          recordOutputs: true,
+        },
       },
     );
 
@@ -34,6 +43,11 @@ export const executeAI = inngest.createFunction(
         system: "You are a helpful assistant.",
         prompt: "What is 5 + 5?",
         model: openai("gpt-5"),
+        experimental_telemetry: {
+          isEnabled: true,
+          recordInputs: true,
+          recordOutputs: true,
+        },
       },
     );
 
@@ -44,6 +58,11 @@ export const executeAI = inngest.createFunction(
         system: "You are a helpful assistant.",
         prompt: "What is 5 + 5?",
         model: anthropic("claude-sonnet-4-5"),
+        experimental_telemetry: {
+          isEnabled: true,
+          recordInputs: true,
+          recordOutputs: true,
+        },
       },
     );
 

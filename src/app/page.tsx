@@ -17,6 +17,9 @@ const Page = () => {
   const testAI = useMutation(trpc.testAI.mutationOptions({
     onSuccess: () => {
       toast.success("AI job queued");
+    },
+    onError: () => {
+      toast.error("Something went wrong");
     }
   }));
 
